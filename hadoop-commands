@@ -1,0 +1,22 @@
+start-dfs.sh	http://localhost:9870
+start-yarn.sh	http://localhost:8088
+jps
+
+hdfs dfs -ls /
+
+hdfs dfs -mkdir /input 
+
+eg Upload file to hdfs
+hdfs dfs -put /home/popos/hadoop/LICENSE.txt /test
+
+eg Execute task
+hadoop jar /home/popos/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.2.4.jar wordcount /test/LICENSE.txt /output/LICENSE-out
+
+eg Copy result to local
+hdfs dfs -get /output/LICENSE-out/part-r-00000 /home/popos/Downloads/hadoop-out
+
+eg compile
+javac --release 11 -classpath /home/popos/Downloads/hadoop-in/hadoop-core-1.2.1.jar -d kmeans KMeansIteration.java 
+
+eg create jar
+jar -cvf KMeansIteration.jar -C kmeans/ .
