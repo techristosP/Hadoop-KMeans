@@ -76,7 +76,7 @@ public class KMeansIteration {
 
     public static void main(String[] args) throws Exception {
         if (args.length != 3) {
-            System.err.println("Usage: KMeansIteration [input path] [centers path] [output path]");
+            System.err.println("Usage: KMeansIteration [datapoints_file path] [init_centers_file path] [output path] (Paths must be HDFS paths)");
             System.exit(-1);
         }
 

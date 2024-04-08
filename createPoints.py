@@ -26,17 +26,18 @@ def create_points(centers, num_points):
     return points
 
 def write_to_file(points, filename):
-    path = os.path.expanduser(f'~/Desktop/{filename}')
+    path = os.getcwd() + '/input/' + filename
     with open(path, 'w') as f:
         for point in points:
             f.write(f'{point[0]} {point[1]}\n')
 
 if __name__ == '__main__':
+
     centers = [(-100, 200), (300, 300), (0, -100)]
     num_points = 10**6+3
 
     points = create_points(centers, num_points)
-    write_to_file(points, 'data.txt')
+    write_to_file(points, 'datapoints.txt')
 
     print(points[:10])
     plt.scatter(*zip(*points))

@@ -1,7 +1,5 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.fs.FileSystem;
@@ -10,13 +8,13 @@ import org.apache.hadoop.fs.FSDataInputStream;
 import org.apache.hadoop.conf.*;
 
 public class KMeans {
-    // private static List<double[]> centers = new ArrayList<>();
+
     private static boolean converged = false;
 
     public static void main(String[] args) throws Exception{
 
         if (args.length != 3) {
-            System.err.println("Usage: KMeans [input/data path] [init centers path] [output path]");
+            System.err.println("Usage: KMeans [datapoints_file path] [init_centers_file path] [output path] (Paths must be HDFS paths)");
             System.exit(-1);
         }
 
@@ -42,9 +40,6 @@ public class KMeans {
 
         String[] iterArgs = {inputPath, centersPath, outputPath};
          
-        // for (String arg : iterArgs) {
-        //     System.out.println(arg);
-        // }
 
         KMeansIteration.main(iterArgs);
          
@@ -56,9 +51,6 @@ public class KMeans {
         // Check if the algorithm has converged
         String newCentersPath = output+"/out_iter_"+iter+"/part-00000";
  
-        // if (checkFileExistance(output+"/out_iter_"+iter)) {
-        //     System.err.println("Path: "+newCentersPath+"\nOutput file exists");
-        // }
         Configuration conf = new Configuration();
         FileSystem fs = FileSystem.get(conf);
         FSDataInputStream inputStream = fs.open(new Path(newCentersPath));
