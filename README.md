@@ -19,7 +19,7 @@ KMeans-compile.sh
 To execute KMeans algorith in Hadoop, run the following commands in project directory (Enter only the names of the files located inside the /input directory, not the path):
 ```
 chmod +x KMeans-exec-hadoop.sh
-KMeans-exec-hadoop.sh <datapoints_file> <init_centers_file> :
+KMeans-exec-hadoop.sh <datapoints_file> <init_centers_file> 
 ```
 
 ###### You can find the results in the output directory of the project with the latest date in the name.
