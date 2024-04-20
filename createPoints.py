@@ -46,4 +46,9 @@ if __name__ == '__main__':
 
     plt.scatter(*zip(*points))                      # plot points
     plt.plot(*zip(*centers), 'ro')                  # plot centers
+    for x, y in centers:
+        plt.text(x, y, f'({x:.2f}, {y:.2f})', fontsize=9)
+    plt.xlabel('x')
+    plt.ylabel('y')
+    plt.title('Data points and real centers')
     plt.show()                                      # show plot
